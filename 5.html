@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5</title>
+
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      #userList {
+        width: 200px;
+        display: inline-block;
+      }
+      #userList > li {
+        cursor: pointer;
+        list-style: none;
+      }
+
+      #userList > li:hover {
+        background-color: orange;
+      }
+
+      #output {
+        display: inline-block;
+        border: 1px solid gray;
+        padding: 10px;
+        vertical-align: top;
+        margin-top: 20px;
+        width: 300px;
+        min-height: 180px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <ul id="userList"></ul>
+
+    <div id="output"></div>
+    <script>
+
+      let users = 
+      [
+        {
+          name: 
+          {
+            first: "Данил ",
+            last: "Шурбан",
+            email: " Danil@gmail.com",
+            age: 40,
+            balance: 12000,
+            company: "Компания1",
+          },
+        },
+        {
+          name: 
+          {
+            first: "Иван",
+            last: "Гунько",
+            email: " Ivan@gmail.com",
+            age: 26,
+            balance: 10300,
+            company: "Компания2",
+          },
+        },
+        {
+          name: 
+          {
+            first: "Ксения",
+            last: "Яновская",
+            email: " Ksenia@gmail.com",
+            age: 41,
+            balance: 10600,
+            company: "Компания3",
+          },
+        },
+        {
+          name: 
+          {
+            first: "Лиза",
+            last: "Кадюк",
+            email: " Liza@gmail.com",
+            age: 35,
+            balance: 11000,
+            company: "Компания4",
+          },
+        },
+        {
+          name: 
+          {
+            first: "Диана",
+            last: "Дычова",
+            email: " Diana@gmail.com",
+            age: 38,
+            balance: 13000,
+            company: "Компания5",
+          },
+        },
+        {
+          name: 
+          {
+            first: "Руслан",
+            last: "Мечет",
+            email: " Ruslan@gmail.com",
+            age: 21,
+            balance: 10600,
+            company: "Компания6",
+          },
+        },
+        {
+          name: 
+          {
+            first: "Карина",
+            last: "Хайдохова",
+            email: " Karina@gmail.com",
+            age: 32,
+            balance: 10080,
+            company: "Компания7",
+          },
+        },
+      ];
+      function mouseEnterHandler(p) 
+      {
+        const userIndex = p.target.dataset.userNumber;
+        const user = users[userIndex];
+        const outputDiv = document.querySelector("#output");
+        outputDiv.innerHTML = `
+          <p>Возраст: ${user.name.age}</p>
+          <p>Баланс: ${user.name.balance}</p>
+          <p>Компания: ${user.name.company}</p>
+          <p>Email: ${user.name.email}</p>
+        `;
+      }
+      let uslerList = document.querySelector("#userList");
+
+      for
+      (let index = 0; index < users.length; index++) 
+      {
+        const currentUser = users[index];
+
+        let li = document.createElement("li");
+        li.textContent = currentUser.name.first + " " + currentUser.name.last;
+        li.dataset.userNumber = index;
+        li.addEventListener("mouseenter", mouseEnterHandler);
+        uslerList.append(li);
+      }
+    </script>
+  </body>
+</html>
